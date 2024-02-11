@@ -28,13 +28,22 @@ class BaseModel:
         `__dict__` of the instance.
 
     """
-    def __init__(self):
+
+    def __init__(self, *args, **kwargs):
         """
-        Method initializes the BaseModel attributes.
+        Method initializes the BaseModel attributes using args and kwargs.
         """
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        if kwargs:
+            D_TIME = "%Y-%m-%dT%H:%M:%S.%f"
+            for key, value in kwargs.items():
+                if key == 'created_at' or key == 'updated_at':
+                    value = datetime.strptime(kwargs[key], D_TIME)
+                if key != '__class__':
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """
