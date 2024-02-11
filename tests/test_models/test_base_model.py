@@ -87,6 +87,29 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(created_at, datetime)
         self.assertIsInstance(updated_at, datetime)
 
+    def test_init_with_keyword_arguments(self):
+        """Test initialization with keyword arguments"""
+        my_model = BaseModel(name="Thabang Maphanisane", my_number=23)
+        self.assertEqual(my_model.name, "Thabang Maphanisane")
+        self.assertEqual(my_model.my_number, 23)
+
+    def test_date_time_conversion(self):
+        """Test automatic conversion of date-time strings"""
+        kwargs = {
+            "created_at": "2024-02-11T17:15:06.202083",
+            "updated_at": "2024-02-11T17:15:06.202095"
+        }
+        my_model = BaseModel(**kwargs)
+        self.assertIsInstance(my_model.created_at, datetime)
+        self.assertIsInstance(my_model.updated_at, datetime)
+
+    def test_default_initialization(self):
+        """Test default initialization"""
+        my_model = BaseModel()
+        self.assertIsNotNone(my_model.id)
+        self.assertIsInstance(my_model.created_at, datetime)
+        self.assertIsInstance(my_model.updated_at, datetime)
+
 
 if __name__ == '__main__':
     unittest.main()
