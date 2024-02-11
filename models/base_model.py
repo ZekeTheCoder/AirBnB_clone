@@ -9,7 +9,8 @@ from datetime import datetime
 
 
 class BaseModel:
-    """Custom base for all the classes in the AirBnb console project.
+    """
+    Custom base for all the classes in the AirBnb console project.
 
     Attributes:
         id(str): assign with an uuid when an instance is created.
@@ -28,22 +29,30 @@ class BaseModel:
 
     """
     def __init__(self):
-        """Method initializes the BaseModel attributes."""
+        """
+        Method initializes the BaseModel attributes.
+        """
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
     def __str__(self):
-        """Method returns string representation of BaseModel instance."""
+        """
+        Method returns string representation of BaseModel instance.
+        """
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
 
     def save(self):
-        """Method updates updated_at attribute with the current datetime."""
+        """
+        Method updates updated_at attribute with the current datetime.
+        """
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        """Method return dictionary representation of BaseModel instance."""
+        """
+        Method return dictionary representation of BaseModel instance.
+        """
         obj_dict = self.__dict__.copy()
         obj_dict['__class__'] = self.__class__.__name__
         obj_dict['created_at'] = self.created_at.isoformat()
