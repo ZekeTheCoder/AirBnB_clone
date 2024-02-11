@@ -1,0 +1,5 @@
+# Ignore pytest cache
+__pycache__
+
+# Ignore files in the practice folder
+practice/
