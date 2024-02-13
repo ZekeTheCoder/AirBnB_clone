@@ -76,6 +76,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(my_model_json['created_at'], str)
         self.assertIsInstance(my_model_json['updated_at'], str)
 
+# Test functionality using keyword arguments
+
     def test_datetime_conversion(self):
         """Test if datetime strings are correctly converted to
         datetime objects."""
@@ -109,6 +111,12 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(my_model.id)
         self.assertIsInstance(my_model.created_at, datetime)
         self.assertIsInstance(my_model.updated_at, datetime)
+
+    def test_instance_equality(self):
+        """Test if instances are not the same object"""
+        my_model = BaseModel()
+        my_new_model = BaseModel()
+        self.assertIsNot(my_model, my_new_model)
 
 
 if __name__ == '__main__':
