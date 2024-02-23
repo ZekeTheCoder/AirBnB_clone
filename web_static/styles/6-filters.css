@@ -25,8 +25,8 @@ section.filters button:hover {
 	opacity: 0.9;
 }
 
-.locations,
-.amenities {
+section.filters .locations,
+section.filters .amenities {
 	height: 100%;
 	width: 25%; 
 	display: flex;
@@ -35,20 +35,20 @@ section.filters button:hover {
 	position: relative;
 }
 
-.locations {
+section.filters .locations {
 	border-right: 1px solid #DDDDDD;
 }
 
-.locations h3,
-.amenities h3 {
+section.filters .locations h3,
+section.filters .amenities h3 {
 	font-weight: 600;
 	font-size: 16px;
 	margin: 0 0 2px 20px;
 	text-align: left;
 }
 
-.locations h4,
-.amenities h4 {
+section.filters .locations h4,
+section.filters .amenities h4 {
 	font-weight: 400;
 	font-size: 14px;
 	margin: 2px 0 0 20px;
